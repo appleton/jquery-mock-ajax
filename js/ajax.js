@@ -11,6 +11,7 @@
     realAjax = $.ajax;
     mockAjax = function(opts) {
       var response, status, _ref, _ref2;
+      opts.type || (opts.type = 'GET');
       response = (_ref = responses[opts.type]) != null ? _ref[(_ref2 = opts.url) != null ? _ref2.replace('/api/v1/', '') : void 0] : void 0;
       status = response ? 'success' : 'error';
       if (response) {

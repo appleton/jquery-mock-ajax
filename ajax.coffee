@@ -19,6 +19,7 @@ define (require) ->
   realAjax = $.ajax
 
   mockAjax = (opts) ->
+    opts.type ||= 'GET'
     response = responses[opts.type]?[opts.url?.replace('/api/v1/', '')]
     status = if response then 'success' else 'error'
 
