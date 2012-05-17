@@ -20,6 +20,7 @@ define (require) ->
 
   mockAjax = (opts) ->
     opts.type ||= 'GET'
+    opts.url += "?#{$.param(opts.data)}" if opts.data
     response = responses[opts.type]?[opts.url]
     status = if response then 'success' else 'error'
 

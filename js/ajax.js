@@ -10,9 +10,12 @@
     };
     realAjax = $.ajax;
     mockAjax = function(opts) {
-      var response, status, _ref, _ref2;
+      var response, status, _ref;
       opts.type || (opts.type = 'GET');
-      response = (_ref = responses[opts.type]) != null ? _ref[(_ref2 = opts.url) != null ? _ref2.replace('/api/v1/', '') : void 0] : void 0;
+      if (opts.data) {
+        opts.url += "?" + ($.param(opts.data));
+      }
+      response = (_ref = responses[opts.type]) != null ? _ref[opts.url] : void 0;
       status = response ? 'success' : 'error';
       if (response) {
         if (typeof opts.success === "function") {
