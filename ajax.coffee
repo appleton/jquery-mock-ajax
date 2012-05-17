@@ -20,7 +20,7 @@ define (require) ->
 
   mockAjax = (opts) ->
     opts.type ||= 'GET'
-    response = responses[opts.type]?[opts.url?.replace('/api/v1/', '')]
+    response = responses[opts.type]?[opts.url]
     status = if response then 'success' else 'error'
 
     if response
